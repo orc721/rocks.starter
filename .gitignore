@@ -26,3 +26,11 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+###
+#  exclude test dbs
+
+football.db
+*.db
+
+
