@@ -1,7 +1,8 @@
 {
   "name": "sportdb-service",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "dependencies": {
-    "sqlite3": "*"
+    "sqlite3": "*",
+    "express": "4.9.5"
   }
 }

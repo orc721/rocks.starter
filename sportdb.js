@@ -25,24 +25,41 @@ sportdb.fetchTeamsByEvent = function( event, callback )  {
   db.all( query, event.key,
            function(err, rows) {
         console.log( "all-complete" );
-    if(err !== null) {
-      console.log( "error:" + err );
-    }
+    if(err !== null)
+      throw err;
     else
-    {
       callback( rows );
-    }
    });
 };
 
 
+sportdb.fetchEventByKey = function( key, callback ) {
+
+  var query =
+    "SELECT" +
+    "  e.[key] AS key, " +
+    "  l.title || ' ' || s.title AS title " +
+    "FROM events e " +
+    "     INNER JOIN seasons s ON s.id = e.season_id " +
+    "     INNER JOIN leagues l ON l.id = e.league_id " +
+    "WHERE e.[key] = ?";
+
+  db.get( query, key,
+           function(err, row) {
+        console.log( "get-complete" );
+    if(err !== null)
+      throw err;
+    else
+      callback( row );
+  });
+};
 
 sportdb.fetchEvents = function( callback )  {
 
   var query =
    "SELECT" +
    "   e.[key]                    AS key, " +
-   "   l.title || ' ' || s.title  AS name " +
+   "   l.title || ' ' || s.title  AS title " +
    "FROM events e " +
    "     INNER JOIN seasons s ON s.id = e.season_id " +
    "     INNER JOIN leagues l ON l.id = e.league_id";
@@ -50,13 +67,10 @@ sportdb.fetchEvents = function( callback )  {
   db.all( query,
            function(err, rows) {
         console.log( "all-complete" );
-    if(err !== null) {
-      console.log( "error:" + err );
-    }
+    if(err !== null)
+      throw err;
     else
-    {
       callback( rows );
-    }
    });
 };
 
