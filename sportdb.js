@@ -8,9 +8,13 @@ sqlite3.verbose();
 var db      = new sqlite3.Database('./football.db');
 
 
-var sportdb = {};
+var sportdb = {
+  Team:  {},
+  Event: {}
+};
 
-sportdb.fetchTeamsByEvent = function( event, callback )  {
+
+sportdb.Team.findByEvent = function( event, callback )  {
 
  var query =
   "SELECT" +
@@ -33,7 +37,7 @@ sportdb.fetchTeamsByEvent = function( event, callback )  {
 };
 
 
-sportdb.fetchEventByKey = function( key, callback ) {
+sportdb.Event.findByKey = function( key, callback ) {
 
   var query =
     "SELECT" +
@@ -54,7 +58,7 @@ sportdb.fetchEventByKey = function( key, callback ) {
   });
 };
 
-sportdb.fetchEvents = function( callback )  {
+sportdb.Event.findAll = function( callback )  {
 
   var query =
    "SELECT" +

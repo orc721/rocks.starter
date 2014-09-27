@@ -6,7 +6,7 @@ var sportdb = require( './sportdb' );
 
 
 app.get( '/events', function( req, res ) {
-  sportdb.fetchEvents( function( events ) {
+  sportdb.Event.findAll( function( events ) {
     console.log( events );
     res.json( events );
   });
@@ -17,9 +17,9 @@ app.get( '/event/:key/teams', function( req, res ) {
 
   var eventKey = req.params.key.replace( "_", "/" );   // replace _ with / e.g. 2014_15 => 2014/15
 
-  sportdb.fetchEventByKey( eventKey, function( event ) {
+  sportdb.Event.findByKey( eventKey, function( event ) {
     console.log( event );
-    sportdb.fetchTeamsByEvent( event, function( teams ) {
+    sportdb.Team.findByEvent( event, function( teams ) {
       console.log( teams );
 
       // step 2: map to json structs for serialization/marshalling
