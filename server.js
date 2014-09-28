@@ -13,17 +13,20 @@ app.use( function(req, res, next) {
     next(err);
 });
 
-// note: error handler will print stacktrace
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.json( {
-        error: {
-            status:  err.status,
-            message: err.message,
-            // o: err
-        }
-    });
-});
+function logErrors( err, req, res, next ) {
+  console.error( err.stack );
+  next( err );
+}
+
+function handleErrors( err, req, res, next ) {
+  res.status( err.status || 500 );
+  res.json( { error:
+               { status:  err.status,
+                 message: err.message } } );
+}
+
+app.use( logErrors );
+app.use( handleErrors );
 
 
 
