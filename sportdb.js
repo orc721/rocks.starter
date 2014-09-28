@@ -28,11 +28,8 @@ sportdb.Team.findByEvent = function( event, callback )  {
 
   db.all( query, event.key,
            function(err, rows) {
-        console.log( "all-complete" );
-    if(err !== null)
-      throw err;
-    else
-      callback( rows );
+        console.log( "Team.findByEvent-complete" );
+        callback( err, rows );
    });
 };
 
@@ -50,11 +47,8 @@ sportdb.Event.findByKey = function( key, callback ) {
 
   db.get( query, key,
            function(err, row) {
-        console.log( "get-complete" );
-    if(err !== null)
-      throw err;
-    else
-      callback( row );
+        console.log( "Event.findByKey-complete" );
+        callback( err, row );
   });
 };
 
@@ -70,11 +64,8 @@ sportdb.Event.findAll = function( callback )  {
 
   db.all( query,
            function(err, rows) {
-        console.log( "all-complete" );
-    if(err !== null)
-      throw err;
-    else
-      callback( rows );
+        console.log( "Event.findAll-complete" );
+        callback( err, rows );
    });
 };
 

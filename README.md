@@ -16,7 +16,7 @@ Step 1: Copy an SQLite database e.g. `football.db` into your folder.
 
 Step 2: Startup the web service (HTTP JSON API). Type:
 
-    $ node ./server.js
+    $ node ./server
 
 That's it. Open your web browser and try some services
 running on your machine on port 9292 (e.g. `localhost:9292`). Example:
