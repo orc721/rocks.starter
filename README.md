@@ -20,7 +20,7 @@ for the inscribed spritesheet.png above.
 
 ```
 og deploy diyrocks
-name: D.I.Y. Rocks (Incl. Punk & Maxi Biz)
+name: D.I.Y. Rocks (Incl. Punks & Maxi Biz)
 max: 33
 dim: 28x28
 <inscribe_id_here>
